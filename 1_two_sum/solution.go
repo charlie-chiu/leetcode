@@ -1,10 +1,9 @@
 package two_sum
 
-var solution = firstTry
+var solution = bruteForce
 
-// first try: brute force
-// time complexity: O(n!)
-func firstTry(nums []int, target int) []int {
+// first try time complexity: O(n^2)
+func bruteForce(nums []int, target int) []int {
 	for firstIndex, num := range nums {
 		for i2, num2 := range nums[firstIndex+1:] {
 			if num+num2 == target {
@@ -13,7 +12,5 @@ func firstTry(nums []int, target int) []int {
 		}
 	}
 
-	// each input would have exactly one solution
-	// not care about this return
 	return nil
 }
