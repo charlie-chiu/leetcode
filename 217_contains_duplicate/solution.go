@@ -1,6 +1,8 @@
 package contains_duplicate
 
-var solution func([]int) bool = hashTable2
+import "sort"
+
+var solution func([]int) bool = sorting
 
 //first try
 // time complexity O(n)
@@ -39,6 +41,19 @@ func hashTable2(nums []int) bool {
 		}
 
 		table[num] = i
+	}
+
+	return false
+}
+
+func sorting(nums []int) bool {
+	// leetcode solution: sorting
+	sort.Ints(nums)
+
+	for i := 1; i < len(nums); i++ {
+		if nums[i] == nums[i-1] {
+			return true
+		}
 	}
 
 	return false
