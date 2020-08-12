@@ -13,7 +13,7 @@ type TestCase struct {
 func TestSolution(t *testing.T) {
 	testCases := []TestCase{
 		{[]int{1, 2, 3, 1}, 3, true},
-		{[]int{1, 0, 1, 1}, 1, false},
+		{[]int{1, 0, 1, 1}, 1, true},
 		{[]int{1, 2, 3, 1, 2, 3}, 2, false},
 	}
 
