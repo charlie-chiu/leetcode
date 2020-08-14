@@ -1,7 +1,8 @@
 package max_consecutive_ones
 
-var findMaxConsecutiveOnes func([]int) int = firstTry
+var findMaxConsecutiveOnes func([]int) int = secondTry
 
+//sliding window
 func firstTry(nums []int) int {
 	const one = 1
 	const zero = 0
@@ -19,6 +20,28 @@ func firstTry(nums []int) int {
 			windowRight++
 			windowLeft = windowRight
 
+		}
+	}
+
+	return maxConsecutive
+}
+
+func secondTry(nums []int) int {
+	const (
+		zero = 0
+		one  = 1
+	)
+	var maxConsecutive, currentMax int
+
+	for _, num := range nums {
+		if num == zero {
+			currentMax = 0
+		} else if num == one {
+			currentMax++
+		}
+
+		if currentMax > maxConsecutive {
+			maxConsecutive = currentMax
 		}
 	}
 
