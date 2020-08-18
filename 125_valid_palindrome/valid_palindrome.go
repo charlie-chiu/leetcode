@@ -7,7 +7,7 @@ import (
 	"log"
 )
 
-var solution = firstTry
+var isPalindrome = firstTry
 
 func firstTry(s string) bool {
 	s = strings.ToLower(s)
@@ -21,6 +21,7 @@ func firstTry(s string) bool {
 	left := 0
 	right := len(s) - 1
 
+	// use two pointer
 	for left < right {
 		if split[left] != split[right] {
 			return false
