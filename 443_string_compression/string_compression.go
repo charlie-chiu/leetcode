@@ -1,5 +1,12 @@
 package string_compression
 
+import (
+	"strconv"
+	"strings"
+)
+
+var compress = firstTry
+
 /*
 	Given an array of characters, compress it in-place.
 
@@ -14,7 +21,37 @@ package string_compression
 	Could you solve it using only O(1) extra space?
 */
 
-func compress(chars []byte) int {
+func firstTry(chars []byte) int {
+	if len(chars) < 2 {
+		return len(chars)
+	}
 
-	return 0
+	//two pointers from left, using additional space for compressed string
+	var left, right, charCount int
+	compressed := strings.Builder{}
+	for right <= len(chars) {
+		if right == len(chars) {
+			charCount = right - left
+			compressed.WriteByte(chars[left])
+			if charCount > 1 {
+				compressed.WriteString(strconv.Itoa(charCount))
+			}
+			break
+		}
+
+		if chars[left] != chars[right] {
+			charCount = right - left
+			compressed.WriteByte(chars[left])
+			if charCount > 1 {
+				compressed.WriteString(strconv.Itoa(charCount))
+			}
+			left = right
+		}
+
+		right++
+	}
+
+	copy(chars, compressed.String())
+
+	return len(compressed.String())
 }
