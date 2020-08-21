@@ -19,7 +19,7 @@ func TestIsPowerOfTwo(t *testing.T) {
 	}
 
 	for _, testCase := range TestCases {
-		got := isPowerOfTwo(testCase.input)
+		got := solution(testCase.input)
 		if got != testCase.output {
 			t.Errorf("test %d is power of two: want %v, got %v", testCase.input, testCase.output, got)
 		}
