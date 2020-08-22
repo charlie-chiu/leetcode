@@ -15,6 +15,10 @@ func TestSolution(t *testing.T) {
 		{5, 2},
 		{7, 3},
 		{10, 4},
+		{20, 8},
+		{100, 25},
+		{1000, 168},
+		{10000, 1229},
 	}
 
 	for _, testCase := range TestCases {
