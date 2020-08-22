@@ -10,11 +10,11 @@ type TestCase struct {
 
 func TestSolution(t *testing.T) {
 	var TestCases = []TestCase{
-		//{0, 0},
-		//{4, 2}, // 2, 3
-		//{5, 3},
-		//{7, 4},
-		//{10, 4},
+		{0, 0},
+		{4, 2}, // 2, 3
+		{5, 2},
+		{7, 3},
+		{10, 4},
 	}
 
 	for _, testCase := range TestCases {
