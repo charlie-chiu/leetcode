@@ -1,9 +1,6 @@
 package middle_node
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+import . "leetcode"
 
 func middleNode(head *ListNode) *ListNode {
 	var slow, fast = head, head.Next

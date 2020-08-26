@@ -1,9 +1,9 @@
 package linked_list_cycle
 
 import (
-	"fmt"
 	"log"
-	"strings"
+
+	. "leetcode"
 )
 
 func hasCycle(head *ListNode) bool {
@@ -29,20 +29,4 @@ func dumpCyclicLst(node *ListNode) {
 		log.Println("----")
 		node = node.Next
 	}
-}
-
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
-func (node *ListNode) String() string {
-	sb := strings.Builder{}
-
-	for node != nil {
-		sb.WriteString(fmt.Sprintf("%v -> ", node.Val))
-		node = node.Next
-	}
-	sb.WriteString("nil")
-	return sb.String()
 }

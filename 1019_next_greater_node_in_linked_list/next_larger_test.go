@@ -12,10 +12,10 @@ type TestCase struct {
 
 func TestMiddleNode(t *testing.T) {
 	var TestCases = []TestCase{
-		//{newLinkedList([]int{2, 1, 5}), []int{5, 5, 0}},
-		//{newLinkedList([]int{2, 7, 4, 3, 5}), []int{7, 0, 5, 5, 0}},
-		//{newLinkedList([]int{1, 7, 5, 1, 9, 2, 5, 1}), []int{7, 9, 9, 9, 0, 5, 0, 0}},
-		{newLinkedList([]int{9, 7, 6, 7, 6, 9}), []int{0, 9, 7, 9, 9, 0}},
+		//{NewLinkedList([]int{2, 1, 5}), []int{5, 5, 0}},
+		//{NewLinkedList([]int{2, 7, 4, 3, 5}), []int{7, 0, 5, 5, 0}},
+		//{NewLinkedList([]int{1, 7, 5, 1, 9, 2, 5, 1}), []int{7, 9, 9, 9, 0, 5, 0, 0}},
+		{NewLinkedList([]int{9, 7, 6, 7, 6, 9}), []int{0, 9, 7, 9, 9, 0}},
 	}
 
 	for _, testCase := range TestCases {
@@ -29,7 +29,7 @@ func TestMiddleNode(t *testing.T) {
 	}
 }
 
-func newLinkedList(n []int) *ListNode {
+func NewLinkedList(n []int) *ListNode {
 	if len(n) == 1 {
 		return &ListNode{
 			Val:  n[0],
@@ -39,6 +39,6 @@ func newLinkedList(n []int) *ListNode {
 
 	return &ListNode{
 		Val:  n[0],
-		Next: newLinkedList(n[1:]),
+		Next: NewLinkedList(n[1:]),
 	}
 }

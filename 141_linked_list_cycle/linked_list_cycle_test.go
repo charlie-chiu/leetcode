@@ -3,6 +3,8 @@ package linked_list_cycle
 import (
 	"reflect"
 	"testing"
+
+	. "leetcode"
 )
 
 type TestCase struct {
