@@ -33,16 +33,15 @@ func (node *ListNode) Dump() {
 	fmt.Println("")
 }
 
-func NewLinkedList(n []int) *ListNode {
-	if len(n) == 1 {
-		return &ListNode{
-			Val:  n[0],
-			Next: nil,
+func NewLinkedList(values ...int) *ListNode {
+	dummyHead := &ListNode{}
+	cur := dummyHead
+	for _, value := range values {
+		cur.Next = &ListNode{
+			Val: value,
 		}
+		cur = cur.Next
 	}
 
-	return &ListNode{
-		Val:  n[0],
-		Next: NewLinkedList(n[1:]),
-	}
+	return dummyHead.Next
 }

@@ -13,8 +13,8 @@ type TestCase struct {
 
 func TestMiddleNode(t *testing.T) {
 	var TestCases = []TestCase{
-		{NewLinkedList([]int{1, 2, 3, 4, 5}), NewLinkedList([]int{3, 4, 5})},
-		{NewLinkedList([]int{1, 2, 3, 4, 5, 6}), NewLinkedList([]int{4, 5, 6})},
+		{NewLinkedList(1, 2, 3, 4, 5), NewLinkedList(3, 4, 5)},
+		{NewLinkedList(1, 2, 3, 4, 5, 6), NewLinkedList(4, 5, 6)},
 	}
 
 	for _, testCase := range TestCases {

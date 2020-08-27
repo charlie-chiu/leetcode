@@ -3,6 +3,8 @@ package next_larger
 import (
 	"reflect"
 	"testing"
+
+	. "leetcode"
 )
 
 type TestCase struct {
@@ -12,10 +14,10 @@ type TestCase struct {
 
 func TestMiddleNode(t *testing.T) {
 	var TestCases = []TestCase{
-		//{NewLinkedList([]int{2, 1, 5}), []int{5, 5, 0}},
-		//{NewLinkedList([]int{2, 7, 4, 3, 5}), []int{7, 0, 5, 5, 0}},
-		//{NewLinkedList([]int{1, 7, 5, 1, 9, 2, 5, 1}), []int{7, 9, 9, 9, 0, 5, 0, 0}},
-		{NewLinkedList([]int{9, 7, 6, 7, 6, 9}), []int{0, 9, 7, 9, 9, 0}},
+		{NewLinkedList(2, 1, 5), []int{5, 5, 0}},
+		{NewLinkedList(2, 7, 4, 3, 5), []int{7, 0, 5, 5, 0}},
+		{NewLinkedList(1, 7, 5, 1, 9, 2, 5, 1), []int{7, 9, 9, 9, 0, 5, 0, 0}},
+		{NewLinkedList(9, 7, 6, 7, 6, 9), []int{0, 9, 7, 9, 9, 0}},
 	}
 
 	for _, testCase := range TestCases {
@@ -26,19 +28,5 @@ func TestMiddleNode(t *testing.T) {
 			t.Logf("want %v", testCase.want)
 			t.Logf(" got %v", got)
 		}
-	}
-}
-
-func NewLinkedList(n []int) *ListNode {
-	if len(n) == 1 {
-		return &ListNode{
-			Val:  n[0],
-			Next: nil,
-		}
-	}
-
-	return &ListNode{
-		Val:  n[0],
-		Next: NewLinkedList(n[1:]),
 	}
 }

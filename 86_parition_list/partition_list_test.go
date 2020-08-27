@@ -15,9 +15,9 @@ type TestCase struct {
 
 func TestPartition(t *testing.T) {
 	var TestCases = []TestCase{
-		{NewLinkedList([]int{3, 3, 3}), 5, NewLinkedList([]int{3, 3, 3})},
-		{NewLinkedList([]int{3, 3, 3}), 1, NewLinkedList([]int{3, 3, 3})},
-		{NewLinkedList([]int{1, 4, 3, 2, 5, 2}), 3, NewLinkedList([]int{1, 2, 2, 4, 3, 5})},
+		{NewLinkedList(3, 3, 3), 5, NewLinkedList(3, 3, 3)},
+		{NewLinkedList(3, 3, 3), 1, NewLinkedList(3, 3, 3)},
+		{NewLinkedList(1, 4, 3, 2, 5, 2), 3, NewLinkedList(1, 2, 2, 4, 3, 5)},
 	}
 
 	for _, testCase := range TestCases {

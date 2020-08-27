@@ -1,9 +1,9 @@
 package next_larger
 
 import (
-	"fmt"
 	"log"
-	"strings"
+
+	. "leetcode"
 )
 
 // first try, using slow-fast pointer
@@ -43,20 +43,4 @@ func nextLargerNodes(head *ListNode) []int {
 	}
 
 	return largerValue
-}
-
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
-func (node *ListNode) String() string {
-	sb := strings.Builder{}
-
-	for node != nil {
-		sb.WriteString(fmt.Sprintf("%v -> ", node.Val))
-		node = node.Next
-	}
-	sb.WriteString("nil")
-	return sb.String()
 }
