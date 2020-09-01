@@ -26,14 +26,14 @@ func NewTree(values ...interface{}) *TreeNode {
 	}
 
 	var root *TreeNode
-	var parentQueue = []**TreeNode{}
+	var parentQueue []**TreeNode
 	for len(treeQueue) > 0 {
 		//dequeue
 		curr := treeQueue[0]
 		treeQueue = treeQueue[1:]
 
-		//set root
 		if len(parentQueue) == 0 {
+			//set root if no parent
 			root = curr
 		} else {
 			*parentQueue[0] = *&curr
