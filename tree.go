@@ -13,7 +13,40 @@ type TreeNode struct {
 }
 
 func NewTree(values ...interface{}) *TreeNode {
-	return nil
+	if len(values) < 1 || values[0] == nil {
+		return nil
+	}
+	if len(values) == 1 {
+		return &TreeNode{Val: values[0].(int)}
+	}
+
+	var treeQueue []*TreeNode
+	for _, value := range values {
+		treeQueue = append(treeQueue, NewTree(value))
+	}
+
+	var root *TreeNode
+	var parentQueue = []**TreeNode{}
+	for len(treeQueue) > 0 {
+		//dequeue
+		curr := treeQueue[0]
+		treeQueue = treeQueue[1:]
+
+		//set root
+		if len(parentQueue) == 0 {
+			root = curr
+		} else {
+			*parentQueue[0] = *&curr
+			parentQueue = parentQueue[1:]
+		}
+
+		if curr != nil {
+			parentQueue = append(parentQueue, &curr.Left)
+			parentQueue = append(parentQueue, &curr.Right)
+		}
+	}
+
+	return root
 }
 
 // level order traversal

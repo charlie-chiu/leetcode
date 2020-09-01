@@ -38,6 +38,13 @@ func TestString(t *testing.T) {
 }
 
 func TestNewTree(t *testing.T) {
+	t.Run("empty return nil", func(t *testing.T) {
+		var got = NewTree()
+		var want *TreeNode = nil
+
+		assertTreeSame(t, want, got)
+	})
+
 	t.Run("nil return nil", func(t *testing.T) {
 		var got = NewTree(nil)
 		var want *TreeNode = nil
