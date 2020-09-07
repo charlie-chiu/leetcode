@@ -1,27 +1,24 @@
 package longest_substring_without_repeating_characters
 
-// leetcode solution
 func lengthOfLongestSubstring(s string) int {
-	var existed = make(map[rune]bool)
-	var longest, currLength int
+	//leetcode approach 3
+	var lastAppeared = make(map[rune]int)
+	var i, longest, currLength int
 
-	for i, _ := range s {
-		existed = map[rune]bool{}
-		for j := i; j < len(s); j++ {
-			//character repeated
-			currChar := []rune(s)[j]
-			currLength = j - i + 1
-			if _, ok := existed[currChar]; ok {
-				currLength--
-				break
-			}
-
-			existed[currChar] = true
+	input := []rune(s)
+	for j := 0; j < len(input); j++ {
+		currChar := input[j]
+		appearedIndex, existed := lastAppeared[currChar]
+		if existed && appearedIndex > i {
+			i = appearedIndex
 		}
 
+		currLength = j - i + 1
 		if currLength > longest {
 			longest = currLength
 		}
+
+		lastAppeared[currChar] = j + 1
 	}
 
 	return longest

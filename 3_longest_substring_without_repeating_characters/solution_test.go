@@ -10,6 +10,7 @@ type TestCase struct {
 func TestLongestSubstring(t *testing.T) {
 	var TestCases = []TestCase{
 		{"", 0},
+		{"abba", 2},
 		{"bbbbb", 1},
 		{"pwwkew", 3},
 		{"dvdf", 3},
