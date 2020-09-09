@@ -11,10 +11,13 @@ type TestCase struct {
 
 func TestSort2Colors(t *testing.T) {
 	var TestCases = []TestCase{
+		{[]int{0}, []int{0}},
+		{[]int{1}, []int{1}},
 		{[]int{0, 0}, []int{0, 0}},
 		{[]int{1, 1}, []int{1, 1}},
 		{[]int{1, 0, 0}, []int{0, 0, 1}},
 		{[]int{1, 1, 1, 1, 0, 0, 0}, []int{0, 0, 0, 1, 1, 1, 1}},
+		{[]int{0, 1, 0, 1, 1, 1}, []int{0, 0, 1, 1, 1, 1}},
 	}
 
 	for _, tc := range TestCases {
