@@ -2,6 +2,7 @@ package leetcode
 
 import (
 	"fmt"
+	"log"
 	"strings"
 )
 
@@ -44,4 +45,17 @@ func NewLinkedList(values ...int) *ListNode {
 	}
 
 	return dummyHead.Next
+}
+
+func DumpCyclicLst(node *ListNode) {
+	var count int
+	sb := strings.Builder{}
+
+	for node != nil && count < 10 {
+		sb.WriteString(fmt.Sprintf("%v -> ", node.Val))
+		node = node.Next
+		count++
+	}
+	sb.WriteString("...")
+	log.Println(sb.String())
 }
