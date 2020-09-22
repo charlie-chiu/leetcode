@@ -1,22 +1,39 @@
 package climbing_stairs
 
-// dynamic programming with memoization
-// 0ms, 2MB
-var memoization = map[int]int{
-	1: 1,
-	2: 2,
+// leetcode approach1 : brute force
+// bottom up
+func climbStairs(n int) int {
+	return helper(0, n)
 }
 
-func climbStairs(n int) int {
-	if ways, ok := memoization[n]; ok {
-		return ways
+func helper(i, n int) int {
+	if i > n {
+		return 0
+	}
+	if i == n {
+		return 1
 	}
 
-	ways := climbStairs(n-1) + climbStairs(n-2)
-	memoization[n] = ways
-
-	return ways
+	return helper(i+1, n) + helper(i+2, n)
 }
+
+// dynamic programming with memoization
+// 0ms, 2MB
+//var memoization = map[int]int{
+//	1: 1,
+//	2: 2,
+//}
+//
+//func climbStairs(n int) int {
+//	if ways, ok := memoization[n]; ok {
+//		return ways
+//	}
+//
+//	ways := climbStairs(n-1) + climbStairs(n-2)
+//	memoization[n] = ways
+//
+//	return ways
+//}
 
 //got TLE on leetcode
 //func climbStairs(n int) int {
