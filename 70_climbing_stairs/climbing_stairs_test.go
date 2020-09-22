@@ -12,6 +12,9 @@ func TestClimbingStairs(t *testing.T) {
 		{2, 2},
 		{3, 3},
 		{4, 5},
+		{10, 89},
+		{20, 10946},
+		{45, 1836311903},
 	}
 
 	for _, tc := range TestCases {
