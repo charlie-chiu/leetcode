@@ -20,7 +20,11 @@ func TestCoinChange(t *testing.T) {
 		{[]int{1, 3, 4, 5}, 7, 2},
 
 		// leetcode : return -1 when amount of money can't be made up
-		//{[]int{2}, 3, -1},
+		{[]int{2}, 3, -1},
+		{[]int{3, 5}, 4, -1},
+
+		//leetcode test case
+		{[]int{186, 419, 83, 408}, 6249, 20},
 	}
 
 	for _, tc := range TestCases {

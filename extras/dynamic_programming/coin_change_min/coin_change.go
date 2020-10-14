@@ -1,7 +1,7 @@
 package coin_change_min
 
 import (
-	"math"
+	"log"
 	"sort"
 )
 
@@ -9,54 +9,57 @@ import (
 // same as leetcode 322
 
 //dp - tabulation - bottom-up
-func coinChange(coins []int, target int) (minCoins int) {
+func coinChange(coins []int, amount int) (minCoins int) {
+	if amount == 0 {
+		return 0
+	}
 	sort.Ints(coins)
-	//if target == 0 {
-	//	return 0
-	//}
 
-	// initial table
-	var table = make([][]int, len(coins))
-	for coinValue := range table {
-		table[coinValue] = make([]int, target+1)
+	var table = make([][]int, amount+1)
+	for i := range table {
+		table[i] = make([]int, len(coins))
 	}
 
-	for amount := 0; amount <= target; amount++ {
-		for coinIndex := 0; coinIndex < len(coins); coinIndex++ {
-			if amount == 0 {
-				// zero coin made up amount 0
-				table[coinIndex][amount] = 0
+	for target := 0; target <= amount; target++ {
+		for denoIndex := 0; denoIndex < len(coins); denoIndex++ {
+			if target == 0 {
+				// 0 coin made up target amount 0
+				table[target][denoIndex] = 0
 				continue
 			}
 
-			coinValue := coins[coinIndex]
+			denomination := coins[denoIndex]
 
-			if coinValue > amount {
-				if coinIndex == 0 {
-					table[coinIndex][amount] = -1
+			//log.Println(table[target])
+			if denomination > target {
+				if denoIndex == 0 {
+					// no smaller denomination
+					table[target][denoIndex] = -1
 				} else {
-					table[coinIndex][amount] = table[coinIndex-1][amount]
+					table[target][denoIndex] = table[target][denoIndex-1]
 				}
 			}
 
-			if coinValue == amount {
-				table[coinIndex][amount] = 1
+			if denomination == target {
+				table[target][denoIndex] = 1
 			}
 
-			if coinValue < amount {
-				table[coinIndex][amount] = table[coinIndex][amount-coinValue] + 1
+			if denomination < target {
+				table[target][denoIndex] = table[target-denomination][denoIndex] + 1
 			}
 		}
 	}
 
-	minCoins = math.MaxInt64
-	for i := 0; i < len(coins); i++ {
-		//log.Println(table[i])
-		if table[i][target] >= -1 && table[i][target] < minCoins {
-			minCoins = table[i][target]
-		}
+	for i, t := range table {
+		log.Println(i, t)
 	}
-	return
+
+	sort.Ints(table[amount])
+	if table[amount][0] > 0 {
+		return table[amount][0]
+	} else {
+		return -1
+	}
 }
 
 // basic recursive
