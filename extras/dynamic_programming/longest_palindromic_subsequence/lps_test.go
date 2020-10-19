@@ -13,6 +13,7 @@ func TestLPS(t *testing.T) {
 		{"BB", 2},
 		{"cbbd", 2},
 		{"BBBAB", 4},
+		{"AAAXA", 4},
 		{"GEEKSFORGEEKS", 5},
 
 		// TLE
