@@ -2,31 +2,29 @@ package longest_palindromic_subsequence
 
 func longestPalindromeSubseq(s string) int {
 	// initial table
-	// half of table is useless
-	// space complexity: O(n^2) n = length of s
+	// table[subseq length][start index]
 	seqLen := len(s)
-	var table = make([][]int, seqLen)
-	for i := range table {
-		table[i] = make([]int, seqLen)
-	}
+	var table = make([][]int, seqLen+1)
 
-	// fill the table
 	for subseqLength := 1; subseqLength <= seqLen; subseqLength++ {
-		for start := 0; start+subseqLength <= seqLen; start++ {
-			end := start + subseqLength - 1
-			if start == end {
-				table[start][end] = 1
+		for start := 0; start <= seqLen-subseqLength; start++ {
+			var lps int
+			var end = start + subseqLength - 1
+			if subseqLength == 1 {
+				lps = 1
 			} else if subseqLength == 2 && s[start] == s[end] {
-				table[start][end] = 2
+				lps = 2
 			} else if s[start] == s[end] {
-				table[start][end] = table[start+1][end-1] + 2
+				lps = 2 + table[subseqLength-2][start+1]
 			} else {
-				table[start][end] = max(table[start+1][end], table[start][end-1])
+				lps = max(table[subseqLength-1][start], table[subseqLength-1][start+1])
 			}
+
+			table[subseqLength] = append(table[subseqLength], lps)
 		}
 	}
 
-	return table[0][seqLen-1]
+	return table[seqLen][0]
 }
 
 func max(a, b int) int {
