@@ -12,7 +12,9 @@ type TestCase struct {
 
 func TestIsPalindrome(t *testing.T) {
 	testCases := []TestCase{
-		{"marmot", false},
+		{"0p", false},
+		{",.", true},
+		{"marrmot", false},
 		{"ab@a", true},
 		{"a.", true},
 		{"", true},
