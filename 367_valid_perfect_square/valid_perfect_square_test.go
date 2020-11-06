@@ -9,6 +9,8 @@ type TestCase struct {
 
 func TestValidSquare(t *testing.T) {
 	var TestCases = []TestCase{
+		{100, true},
+		{101, false},
 		{16, true},
 		{14, false},
 	}
