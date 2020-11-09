@@ -2,6 +2,26 @@ package insert_interval
 
 import "sort"
 
+// another approach
+//func insert(intervals [][]int, newInterval []int) [][]int {
+//	var i int
+//	result := make([][]int, 0)
+//	for ;i < len(intervals); i++ {
+//		curr := intervals[i]
+//
+//		if curr[1] < newInterval[0] {
+//			result = append(result, curr)
+//		} else if newInterval[1] < curr[0] {
+//			break
+//		} else {
+//			newInterval[0] = min(newInterval[0], curr[0])
+//			newInterval[1] = max(newInterval[1], curr[1])
+//		}
+//	}
+//
+//	return append(append(result, newInterval), intervals[i:]...)
+//}
+
 func insert(intervals [][]int, newInterval []int) [][]int {
 	intervals = append(intervals, newInterval)
 
@@ -32,7 +52,6 @@ func insert(intervals [][]int, newInterval []int) [][]int {
 	return result
 }
 
-// same as 56 merge intervals
 func min(a, b int) int {
 	if a < b {
 		return a
