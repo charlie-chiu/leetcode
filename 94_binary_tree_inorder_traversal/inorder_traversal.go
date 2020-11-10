@@ -7,23 +7,24 @@ import (
 // 0ms, 2MB
 func inorderTraversal(root *TreeNode) []int {
 	var stack []*TreeNode
-	var node = root
-	var answer []int = make([]int, 0)
+	var result = make([]int, 0)
 
-	for node != nil || len(stack) > 0 {
-		for node != nil {
-			stack = append(stack, node)
-			node = node.Left
+	var curr = root
+	for curr != nil || len(stack) > 0 {
+		for curr != nil {
+			stack = append(stack, curr)
+			curr = curr.Left
 		}
 
-		node = stack[len(stack)-1]
+		//pop
+		curr = stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
-		answer = append(answer, node.Val)
+		result = append(result, curr.Val)
 
-		node = node.Right
+		curr = curr.Right
 	}
 
-	return answer
+	return result
 }
 
 // first try with recursion
@@ -33,5 +34,7 @@ func inorderTraversal(root *TreeNode) []int {
 //		return []int{}
 //	}
 //
-//	return append(append(inorderTraversal(root.Left), root.Val), inorderTraversal(root.Right)...)
+//	left := inorderTraversal(root.Left)
+//	right := inorderTraversal(root.Right)
+//	return append(append(left, root.Val), right...)
 //}

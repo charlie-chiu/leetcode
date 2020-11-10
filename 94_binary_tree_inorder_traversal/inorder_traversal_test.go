@@ -17,6 +17,7 @@ func TestInorderTraversal(t *testing.T) {
 	var TestCases = []TestCase{
 		{nil, []int{}},
 		{NewTree(1, nil, 2, 3), []int{1, 3, 2}},
+		{NewTree(1, 4, 3, 5, 6, 2), []int{5, 4, 6, 1, 2, 3}},
 	}
 
 	for _, tc := range TestCases {
