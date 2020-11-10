@@ -19,6 +19,7 @@ func TestPostorderTraversal(t *testing.T) {
 		{NewTree(1, 2), []int{2, 1}},
 		{NewTree(1, nil, 2), []int{2, 1}},
 		{NewTree(1, nil, 2, 3), []int{3, 2, 1}},
+		{NewTree(1, 4, 3, 5, 6, 2), []int{5, 6, 4, 2, 3, 1}},
 	}
 
 	for _, tc := range TestCases {
