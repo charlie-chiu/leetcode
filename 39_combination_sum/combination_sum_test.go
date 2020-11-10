@@ -1,8 +1,10 @@
 package combination_sum
 
 import (
-	"reflect"
+	"fmt"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 type TestCase struct {
@@ -20,12 +22,8 @@ func TestCombinationSum(t *testing.T) {
 	for _, tc := range TestCases {
 		t.Run("", func(t *testing.T) {
 			got := combinationSum(tc.candidates, tc.target)
-
-			if !reflect.DeepEqual(got, tc.answer) {
-				t.Errorf("wrong answer")
-				t.Logf("want %v", tc.answer)
-				t.Logf(" got %v", got)
-			}
+			errMsg := fmt.Sprintf("target %d, candidates %v", tc.target, tc.candidates)
+			assert.ElementsMatch(t, got, tc.answer, errMsg)
 		})
 	}
 }
