@@ -1,40 +1,36 @@
 package subsets
 
+// iterative approach
 func subsets(nums []int) [][]int {
-	return subsetsHelper([]int{}, nums)
-}
+	var subsets = [][]int{{}}
 
-func subsetsHelper(path []int, nums []int) [][]int {
-	//base case, no more num to choose
-	if len(nums) == 0 {
-		return [][]int{path}
+	for _, num := range nums {
+		for _, subset := range subsets {
+			newSubset := make([]int, len(subset), len(subset)+1)
+			copy(newSubset, subset)
+			newSubset = append(newSubset, num)
+			subsets = append(subsets, newSubset)
+		}
 	}
 
-	firstNum := nums[0]
-	nums = nums[1:]
-	var choosePath = make([]int, len(path))
-	copy(choosePath, path)
-	// choose first number                             //not choose first number
-	return append(subsetsHelper(append(choosePath, firstNum), nums), subsetsHelper(path, nums)...)
+	return subsets
 }
 
-// first try myself
+// recurse approach
 //func subsets(nums []int) [][]int {
-//	// base case
-//	if len(nums) == 1 {
-//		return [][]int{{}, {nums[0]}}
+//	return subsetsHelper([]int{}, nums)
+//}
+//
+//func subsetsHelper(path []int, nums []int) [][]int {
+//	//base case, no more num to choose
+//	if len(nums) == 0 {
+//		return [][]int{path}
 //	}
 //
-//	num := nums[len(nums)-1]
-//	subsetsWithoutNum := subsets(nums[:len(nums)-1])
-//	var subsetWithNum = make([][]int, len(subsetsWithoutNum))
-//	copy(subsetWithNum, subsetsWithoutNum)
-//
-//	for i, subset := range subsetWithNum {
-//		temp := make([]int, len(subset))
-//		copy(temp, subset)
-//		subsetWithNum[i] = append(temp, num)
-//	}
-//
-//	return append(subsetsWithoutNum, subsetWithNum...)
+//	firstNum := nums[0]
+//	nums = nums[1:]
+//	var choosePath = make([]int, len(path))
+//	copy(choosePath, path)
+//	// choose first number                             //not choose first number
+//	return append(subsetsHelper(append(choosePath, firstNum), nums), subsetsHelper(path, nums)...)
 //}
