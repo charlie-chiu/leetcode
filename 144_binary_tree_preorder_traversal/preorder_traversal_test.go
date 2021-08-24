@@ -12,7 +12,7 @@ type TestCase struct {
 	answer []int
 }
 
-func TestPostorderTraversal(t *testing.T) {
+func TestPreorderTraversal(t *testing.T) {
 	var TestCases = []TestCase{
 		{nil, []int{}},
 		{NewTree(1), []int{1}},
